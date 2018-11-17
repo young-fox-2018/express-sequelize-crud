@@ -8,6 +8,54 @@ router.get('/', (req, res) => {
             res.render('./teachers/index.ejs', { datateachers })
         })
 })
+router.get('/add', (req, res) => {
+    res.render('./teachers/add.ejs')
+})
+router.post('/add', (req, res) => {
+    let newTeacher = {
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email: req.body.email
+    }
+    Controller.add(newTeacher)
+        .then(() => {
+            res.redirect('/teacher')
+        })
 
+})
+router.get('/edit/:id', (req, res) => {
+    Controller.findById({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(teacher => {
+            res.render('./teachers/edit.ejs', { teacher })
+        })
+
+})
+router.post('/edit/:id', (req, res) => {
+    let newTeacher = {
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email: req.body.email
+    }
+    Controller.update(newTeacher, req.params.id)
+        .then(() => {
+            res.redirect('/teacher')
+        })
+
+})
+router.get('/delete/:id', (req, res) => {
+    Controller.delete({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(() => {
+            res.redirect('/teacher')
+        })
+
+})
 
 module.exports = router
