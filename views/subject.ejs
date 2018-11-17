@@ -3,12 +3,31 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Subject</title>
+    <title>Subject Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/table-styles.css" />
 </head>
+
 <body>
-    <h1>Subject Page</h1>
+    <h1>Subject Lists</h1>
+    <p class="center"><a href="/subject/add">Add New Subject</a></p>
+    
+    <table>
+        <col width="5%">
+        <col width="20%">
+        <col width="20%">
+        <tr>
+            <th>No.</th>
+            <th>Subject</th>
+            <th>Options</th>
+        </tr>
+        <% for( let i = 0; i < data.length; i++)  {%>
+        <tr>
+            <td class="center"><%= i+1 %></td>
+            <td><%= data[i].subject_name %></td>
+            <td class="center"><a href="/subject/edit/<%= data[i].id%>"> Edit </a> | <a href="/subject/delete/<%= data[i].id%>" onclick="return confirm('Delete this subject?')"> Delete </a></td>
+        </tr>
+        <% } %>
+    </table>
 </body>
 </html>

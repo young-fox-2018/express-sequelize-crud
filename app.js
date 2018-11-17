@@ -3,6 +3,7 @@ var app = express();
 const home = require('./routes/index');
 const student = require('./routes/student');
 const teacher = require('./routes/teacher');
+const subject = require('./routes/subject');
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
@@ -12,6 +13,7 @@ app.set('view engine', 'ejs');
 app.use('/', home);
 app.use('/student', student);
 app.use('/teacher', teacher);
+app.use('/subject', subject);
 app.use(express.static(__dirname + '/views'));
 
 app.listen(3000, () => {

@@ -1,13 +1,13 @@
-const Model = require('../models');
-const Teacher = Model.Teacher
+const Model = require('../models/');
+const Subject = Model.Subject;
 
-class TeacherController {
-    static getAllTeachers() {
+class SubjectController {
+    static getAllSubjects() {
         return new Promise( (resolve, reject) => {
-            Teacher.findAll({order: ['id']})
+            Subject.findAll({order: ['id']})
             .then(data => {
-                let teachers = data.map(element => element.dataValues);
-                resolve(teachers);
+                let subjects = data.map(element => element.dataValues);                
+                resolve(subjects);
             })
             .catch(err => {
                 reject(err);
@@ -15,12 +15,10 @@ class TeacherController {
         });
     }
 
-    static addTeacher(data) {
-        return new Promise((resolve, reject) => {
-            Teacher.create({
-                first_name: data.firstName,
-                last_name: data.lastName,
-                email: data.email,
+    static addSubject(data) {
+        return new Promise( (resolve, reject) => {
+            Subject.create({
+                subject_name: data.subject,
                 updatedAt: new Date()
             })
             .then(data => {
@@ -32,9 +30,9 @@ class TeacherController {
         });
     }
 
-    static findTeacher(id) {
+    static findSubject(id) {
         return new Promise ((resolve, reject) => {
-            Teacher.findByPk(String(id))
+            Subject.findByPk(String(id))
             .then(data => {
                 resolve(data);
             })
@@ -44,13 +42,11 @@ class TeacherController {
         });
     }
 
-    static updateTeacher(id, data) {
+    static updateSubject(id, data) {
         return new Promise((resolve, reject) => {
-            Teacher.update(
+            Subject.update(
                 {
-                    first_name: data.firstName,
-                    last_name: data.lastName,
-                    email: data.email,
+                    subject_name: data.subject,
                     updatedAt: new Date()
                 },
                 {where: {id: id}}
@@ -64,9 +60,9 @@ class TeacherController {
         });
     }
 
-    static deleteTeacher(id) {
+    static deleteSubject(id) {
         return new Promise( (resolve, reject) => {
-            Teacher.destroy(
+            Subject.destroy(
                 {where: {id: id}})
             .then(data => {
                 resolve(data);
@@ -78,4 +74,4 @@ class TeacherController {
     }
 }
 
-module.exports = TeacherController
+module.exports = SubjectController;

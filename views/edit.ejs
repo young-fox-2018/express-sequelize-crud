@@ -3,23 +3,23 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Edit Student Data</title>
+    <title>Edit <%=title %> Data</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="/form-styles.css" />
 </head>
 
 <body>
-    <h1>Edit Student Data</h1>
-    <p class="center"><a href="/student">See all students</a></p>
+    <h1>Edit <%=title %> Data</h1>
+    <p class="center"><a href="/<%=title.toLowerCase() %>">See all <%=title.toLowerCase() %>s</a></p>
     
-    <form method="POST" action="/student/edit<%=data.id %>">
+    <form method="POST" action="/<%=title.toLowerCase() %>/edit<%=data.id %>">
         <p>First Name:</p>
         <input type="text" name="firstName" value="<%= data.first_name%>" required>
         <p>Last Name:</p>
         <input type="text" name="lastName" value="<%= data.last_name %>" required>
         <p>Email:</p>
         <input type="email" name="email"value="<%= data.email %>" required>
-        <input id="submit" type="submit" value="Edit Student">
+        <input id="submit" type="submit" value="Edit <%=title %>">
     </form>
 </body>
 </html>

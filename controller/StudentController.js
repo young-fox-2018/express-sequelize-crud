@@ -1,6 +1,5 @@
 const Model = require('../models');
 const Student = Model.Student;
-const View = require('../views/view');
 
 class StudentController {
     static getAllStudents() {
@@ -28,7 +27,7 @@ class StudentController {
                 resolve(data);
             })
             .catch(err => {
-                View.displayError(`Error add data`);            
+                reject(err);
             });
         });
     }
@@ -62,7 +61,7 @@ class StudentController {
             .catch(err => {
                 reject(err);
             });
-        })
+        });
     }
 
     static deleteStudent(id) {
