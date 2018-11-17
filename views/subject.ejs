@@ -42,9 +42,36 @@
     </div>
     <br>
     <br>
-    <div class="jumbotron container">
-        <h1 class="text-center">Hacktiv8 inc.</h1>
-        <p class="text-center">Welcome to Hacktiv8 Bootcamp inc.</p>
+    <div class="container">
+        <h1 style="text-align:center"> Subject Data</h1>
+        <h4 style="text-align:center"><a class="nav-link" href="/subject/add">add Subject</a> </h4>
+
+        <table class="table table-striped">
+            <thead style="text-align:center">
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Subject Name</th></a></th>
+                    <th scope="col">Option</th>
+
+                </tr>
+            </thead>
+            <tbody style="text-align:center">
+                <%subjectData.forEach(subject=>{%>
+                <tr scope="row">
+                    <td>
+                        <%=subject.id%>
+                    </td>
+                    <td>
+                        <%=subject.subject_name%>
+                    </td>
+                    <td>
+                        <a href="/subject/edit/<%= subject.id %>"> Edit</a>
+                        <a href="/subject/delete/<%= subject.id %>" onclick="return confirm('Are you sure you want to delete this Subject?');">|Delete</a></td>
+                    </td>
+                </tr>
+                <% })%>
+            </tbody>
+        </table>
     </div>
     <div class="footer">
         <footer> &copy; hacktiv8.sch </footer>
