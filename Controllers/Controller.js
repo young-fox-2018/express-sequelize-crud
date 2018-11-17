@@ -32,6 +32,22 @@ class Controller {
     })
   }
 
+  static addStudent(obj) {
+    return new Promise((resolve, reject) => {
+      Student.create({
+        first_name:obj.first_name,
+        last_name:obj.last_name ,
+        email: obj.email
+      })
+      .then(data =>{
+        resolve(data)
+      })
+      .catch(err =>{
+        reject(err)
+      })
+    })
+  }
+
 
 }
 

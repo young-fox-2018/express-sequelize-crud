@@ -16,7 +16,16 @@ route.get('/add' , (req,res) => {
 })
 
 route.post('/add' , (req,res) => {
-  res.render('formOutputStudent.ejs')
+  Controller.addStudent(req.body)
+    .then(data1 =>{
+      Controller.readStudents()
+      .then(data => {
+        res.render('student.ejs' , {data:data})
+      })
+    })
+    .catch(err =>{
+      View.display(`ERROR in adding student in routes` , err.message)
+    })
 })
 
 module.exports = route
