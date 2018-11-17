@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        padding: 25px;
+        width: 100%;
+        color: #549DF7;
+        text-align: center;
+        background: white;
+    }
+    </style>
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+
+<body>
+    <br>
+    <br>
+    <div class="container">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/student">Student</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/teacher">Teacher</a>
+            </li>
+        </ul>
+    </div>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <h2>Your data</h2>
+        <form action="/student/edit/<%=data.id%>" method="post">
+            <div class="form-group">
+                <label for="first_name">first_name: </label>
+                <input type="text" name="first_name" class="form-control" aria-describedby="emailHelp" value=<%=data.first_name%>>
+            </div>
+            <div class="form-group">
+                <label for="last_name">last_name: </label>
+                <input type="text" name="last_name" class="form-control" aria-describedby="emailHelp" value=<%=data.last_name%>>
+            </div>
+            <div class="form-group">
+                <label for="email">email: </label>
+                <input type="text" name="email" class="form-control" aria-describedby="priceHelp" value=<%=data.email%>>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+
+        </form>
+    </div>
+    <div style=" height: 100px">
+    </div>
+    <br>
+
+    <div class="footer">
+        <footer> &copy; hacktiv8.sch </footer>
+        <marquee behavior="scroll" direction="">
+        </marquee>
+    </div>
+</body>
+
+</html>
