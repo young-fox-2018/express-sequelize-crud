@@ -5,8 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style>
+    body {
+    background-color:rgb(202, 230, 240);
+    }   
+    * {
+      font-family: courier; 
+      color: rgb(82, 154, 156);
+    }
+      h1 {
+          color:black;
+          font-family: verdana;
+          font-size: 300%;
+      }
+      h2 {
+          color:blue;
+          font-size: 160%;
+      }
+      </style>
 </head>
 <body>
-  
+  <header> <h1>Hello! Welcome to our home page</h1> </header>
+  <h2>Here are the things you can do in our page :</h2>
+  <ul> 
+    <li>Viewing student data ==> /student</li>
+    <li>Adding student data ==> /student/add</li>
+    <li>Editting student data ==> /student/edit:id</li>
+    <li>Deleting student data ==> /student/delete/:id</li>
+  </ul>
 </body>
 </html>
