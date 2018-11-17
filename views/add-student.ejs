@@ -1,0 +1,25 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>New Student</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/form-styles.css" />
+</head>
+
+<body>
+    <h1>Add Students Data</h1>
+    <p class="center"><a href="/student">See all students</a></p>
+
+    <form method="POST" action="/student">
+        <p>First Name:</p>
+        <input type="text" name="firstName" required>
+        <p>Last Name:</p>
+        <input type="text" name="lastName" required>
+        <p>Email:</p>
+        <input type="email" name="email" required>
+        <input id="submit" type="submit" value="Add Student">
+    </form>
+</body>
+</html>
