@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <% include partials/head %>
+</head>
+<body>
+    <% include partials/menu %> 
+    <div class="container-fluid">    
+        <h3 class="bg-3 text-center"> Students </h3>
+        <h4 class="add text-center"> <a href="student/add">Add Students </a></h4><br>
+        <%  if(dataStudent.length > 0) { %>
+        <table class="table table-striped" >
+            <thead>
+                <tr>
+                    <th scope="col">First name</th>
+                    <th scope="col">Last name</th> 
+                    <th scope="col">Email</th>
+                    <th scope="col"> Option </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% dataStudent.forEach(student=>{ %>
+                <tr>
+                <th> <%- student.first_name %> </th>
+                <th> <%- student.last_name %>  </th> 
+                <th> <%- student.email %> </th>
+                <th> <a href="student/edit/<%- student.id %>"> Edit </a> |  <a href="student/delete/<%- student.id %>" onclick="return confirm('Are you sure?')"> Delete </a> </th>
+                </tr> 
+                <% }) %>
+            </tbody>
+        </table>
+        <% } 
+        else { %>
+            Data tidak ada
+        <% } %>
+    </div>
+</body>
+</html>
