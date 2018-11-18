@@ -22,11 +22,13 @@
       </tr>
     </thead>
     <tbody>
-        <%dataTeachers.forEach(element => {%>
+        <%dataTeacher.forEach(element => {%>
             <tr>
                 <td><%=element.first_name%></td>
                 <td><%=element.last_name%></td>
                 <td><%=element.email%></td>
+                <td><a href="teachers/edit/<%= element.id %>" >edit</a></td>
+                <td><a href="teachers/delete/<%= element.id %>" >delete</a></td>
             </tr>
         <%})%>
     </tbody>

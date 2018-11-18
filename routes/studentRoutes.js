@@ -17,7 +17,6 @@ routes.get('/students/add', (req, res) => { // ----> Create
 })
 
 routes.post('/students/add', (req, res) => {
-    console.log(req.body)
     Student.create({
         first_name: req.body.first_name,
         last_name: req.body.last_name,
