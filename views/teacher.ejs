@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Teacher</title>
+</head>
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 80%;
+    }
+    td, th {
+        border-bottom: 2px solid #b3b3b3;
+        text-align: center;
+        padding: 8px;
+    }
+    .left {
+        text-align: left;
+    }
+</style>
+
+<body>
+    <div>
+        <table>
+            <tr>
+                <th>id</th>
+                <th class="left">First Name</th>
+                <th class="left">Last Name</th>
+                <th class="left">Email</th>
+            </tr>
+            <% for (let i = 0; i < data.length; i++) { %>
+            <tr>
+                <td><%= data[i].id %></td>
+                <td class="left"><%= data[i].first_name %></td>
+                <td class="left"><%= data[i].last_name %></td>
+                <td class="left"><%= data[i].email %></td>
+            </tr>
+            <% }; %>
+        </table>
+    </div>  
+</body>
+</html>

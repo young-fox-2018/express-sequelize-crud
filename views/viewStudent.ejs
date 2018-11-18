@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 80%;
+    }
+    td, th {
+        border-bottom: 2px solid #b3b3b3;
+        text-align: center;
+        padding: 8px;
+    }
+    .left {
+        text-align: left;
+    }
+    /* a:link {color: black}
+    a:visited {color:green}
+    a:hover {color:pink}
+    table,th,td{border: 2px solid black;} */
+</style>
+
+<body>
+    
+    <h1 style="text-align:center; color:blueviolet">Students Data</h1>
+    <h3 style="text-align:center; margin-top: -15px;"><a href="/students/add">add student</a></h3>
+    <table style="width: 100% ">
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Options</th>
+        </tr>
+            <% for(let iStudents = 0 ; iStudents<studentsAll.length ; iStudents++) {%>
+        <tr>
+           <% console.log(studentsAll[iStudents]) %>
+            <td style="text-align: center"><%= studentsAll[iStudents].id %></td>
+            <td style="text-align: center"><%= studentsAll[iStudents].first_name %></td>
+            <td style="text-align: center"><%= studentsAll[iStudents].last_name %></td>
+            <td style="text-align: center"><%= studentsAll[iStudents].email %></td>
+            <td style="text-align: center"><a href="/students/edit/<%= studentsAll[iStudents].id %>">Edit</a> | <a href="/students/delete/<%= studentsAll[iStudents].id %>">Delete</a></td>
+        </tr>
+        <% } %>
+    </table>
+</body>
+</html>

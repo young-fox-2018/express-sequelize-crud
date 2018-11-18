@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<style>
+    table,th,td{border: 2px solid black;}
+</style>
+
+<body>
+    <h1 style="text-align:center; color:burlywood">Data Student Found</h1>
+    <table style="width: 100% ">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+        </tr>
+        
+        <tr>
+            <td style="text-align: center"><%= student.first_name %></td>
+            <td style="text-align: center"><%= student.last_name %></td>
+            <td style="text-align: center"><%= student.email %></td>
+        </tr>
+    </table>
+</body>
+</html>
