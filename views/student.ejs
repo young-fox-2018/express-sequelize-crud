@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Student</h1>
+    <ul>
+      <%data.forEach(function(student){%>
+      <li>
+        Nama : <%=student.first_name %> <%=student.last_name %>
+        <br>
+        Email : <%=student.email %>
+      </li>
+      <%})%>
+      <li></li>
+      <br>
+      <a href="student/add">Add Student</a>
+    </ul>
+  </body>
+</html>
