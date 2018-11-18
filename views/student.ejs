@@ -13,11 +13,11 @@
         <br>
         Email : <%=student.email %>
         <br>
-        <a href="student/edit/<%=data.id%>">Edit</a>
-        <a href="student/delete/<%=data.id%>">Delete</a>
+        <a href="student/edit/<%=student.id%>">Edit</a>
+        <a href="student/delete/<%=student.id%>" onclick="return confirm('Apa anda yakin ingin menghapus data ini?')">Delete</a>
       </li>
+      <br>
       <%})%>
-      <li></li>
       <br>
       <a href="student/add">Add Student</a>
     </ul>

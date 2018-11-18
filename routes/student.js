@@ -10,4 +10,10 @@ routes.get('/add', function(req, res) {
 
 routes.post('/add', ControllerStudent.create)
 
+routes.get('/edit/:id', ControllerStudent.editForm)
+
+routes.post('/edit/:id', ControllerStudent.update)
+
+routes.get('/delete/:id', ControllerStudent.delete)
+
 module.exports = routes;
