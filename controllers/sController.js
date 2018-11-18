@@ -1,7 +1,7 @@
 const Model = require('../models')
 const Student = Model.Student
 
-class Controller{
+class sController{
 
     static allStudent(){
         return new Promise((resolve, reject) =>{
@@ -65,10 +65,10 @@ class Controller{
                 }
             })
             .then( data => resolve(data) )
-            .catch(err => reject(err) )
+            .catch(err => reject(err.dataValues) )
         })
     }
 
 }
 
-module.exports = Controller
+module.exports = sController

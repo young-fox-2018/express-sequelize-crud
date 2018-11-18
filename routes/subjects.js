@@ -1,20 +1,18 @@
 const routes = require('express').Router()
-const sController = require('../controllers/sController')
+const sbController = require('../controllers/sbController')
 const View = require('../views/view')
 
 
 routes.get("/", function(req, res){
-    sController.allStudent()
-    .then(studentList =>{
-        let all = studentList.map(students => students.dataValues)
-        // console.log(students.dataValues,"===========================================")
-        // console.log(all,"==========================================================")
-        res.render("allStudents.ejs", {studentsAll: all})
+    sbController.allSubjects()
+    .then(subjectList =>{
+        let all = subjectList.map(subjects => subjects.dataValues)
+        res.render("allSubjects.ejs", {sbAll: all})
     })
     .catch(err => {
         View.displayError(
             {
-                Message: "Errornya di routes.get allStudent",
+                Message: "Errornya di routes.get allSubjects",
                 Details: err
             }
         )
@@ -22,18 +20,18 @@ routes.get("/", function(req, res){
 })
 
 routes.get("/add", function(req, res){
-    res.render("studentsAdd.ejs")
+    res.render("sbAdd.ejs")
 })
 
 routes.post("/add", function(req, res){
-    sController.addStudent(req.body)
+    sbController.addSubject(req.body)
      .then(data => {
-         res.render("studentSaved.ejs", {dataSaved: data.dataValues})
+         res.render("sbSaved.ejs", {sbSaved: data.dataValues})
      })
      .catch(err => {
          View.displayError(
             {
-            Message: "Error in routes.post addStudent",
+            Message: "Error in routes.post addSubject",
             Details: err
             }
         )
@@ -41,14 +39,14 @@ routes.post("/add", function(req, res){
 })
 
 routes.get("/edit/:id", function(req, res){
-    res.render("studentsEdit.ejs")
+    res.render("sbEdit.ejs")
 })
 
 routes.post("/edit/:id", function(req, res){
     let params = req.params
     let id = params.id
 
-    sController.updateStudent(req.body, id)
+    sbController.updateSubject(req.body, id)
     .then( () => {
         res.render("edited.ejs")
     })
@@ -66,9 +64,9 @@ routes.get("/:id", function(req,res){
     let params = req.params
     let id = params.id
 
-    sController.findStudent(id)
-    .then(student => {
-        res.render("oneStudent.ejs", {student: student.dataValues})
+    sbController.findSubject(id)
+    .then(sb => {
+        res.render("oneSubject.ejs", {sb: sb.dataValues})
     })
     .catch(err =>{
         View.displayError(
@@ -84,21 +82,21 @@ routes.get("/delete/:id", function(req,res){
     let params = req.params
     let id = params.id
 
-    sController.deleteStudent(id)
+    sbController.deleteSubject(id)
     .then( data => {
         if(!data){
-            confirm("Data not found")
-            res.redirect('/students')
+            // confirm("Data not found")
+            res.redirect('/subjects')
         }
         else{
-            confirm("Data is deleted!")
-            res.redirect('/students')
+            // confirm("Data is deleted!")
+            res.redirect('/subjects')
 
         }
     })
     .catch( err => View.displayError(
         {
-            Message: "Errornya di routes.get deleteStudent",
+            Message: "Errornya di routes.get deleteSubject",
             Details: err
         })
     )
