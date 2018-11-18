@@ -1,8 +1,8 @@
 const routes = require('express').Router()
-const { Student } = require('../models')
+const StudentController = require('../controllers/StudentController')
 
 routes.get('/students', (req, res) => { // ---> Menampilkan data students
-    Student.findAll()
+    StudentController.findAll()
         .then(data => {
             console.log(data.dataValues)
             res.render('listStudents.ejs', { data })
@@ -17,11 +17,7 @@ routes.get('/students/add', (req, res) => { // ----> Create
 })
 
 routes.post('/students/add', (req, res) => {
-    Student.create({
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        email: req.body.email
-    })
+    StudentController.create(req.body)
         .then(() => {
             res.redirect('/students')
         })
@@ -32,13 +28,8 @@ routes.post('/students/add', (req, res) => {
 
 
 routes.get('/students/edit/:id', (req, res) => {
-    Student.findOne({
-        where: {
-            id: req.params.id
-        }
-    })
+    StudentController.findOne(req.params.id)
         .then(students => {
-            console.log(students)
             res.render('formEdit', { students: students })
         })
         .catch(err => {
@@ -47,15 +38,7 @@ routes.get('/students/edit/:id', (req, res) => {
 })
 
 routes.post('/students/edit/:id', (req, res) => {
-    Student.update({
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        email: req.body.email
-    }, {
-            where: {
-                id: req.params.id
-            }
-        })
+    StudentController.update(req.body, req.params.id)
         .then(() => {
             res.redirect('/students')
         })
@@ -65,11 +48,7 @@ routes.post('/students/edit/:id', (req, res) => {
 })
 
 routes.get('/students/delete/:id', (req, res) => {
-    Student.destroy({
-        where: {
-            id: req.params.id
-        }
-    })
+    StudentController.delete(req.params.id)
     .then(() => {
         res.redirect('/students')
     })

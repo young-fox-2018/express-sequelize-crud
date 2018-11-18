@@ -34,24 +34,20 @@
     </div>  
   </nav>
 <div class="container">
-  <h2>Basic Table</h2>
-  <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>            
+  <h2>Subjects</h2>
+  <p>Data Subjects</p>            
   <table class="table">
     <thead>
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+        <th>Subject Name</th>
       </tr>
     </thead>
     <tbody>
-        <%dataTeacher.forEach(element => {%>
+        <%dataSubjects.forEach(element => {%>
             <tr>
-                <td><%=element.first_name%></td>
-                <td><%=element.last_name%></td>
-                <td><%=element.email%></td>
-                <td><a href="teachers/edit/<%= element.id %>" >edit</a></td>
-                <td><a href="teachers/delete/<%= element.id %>" onclick="confirm('are you sure?')" >delete</a></td>
+                <td><%=element.subject_name%></td>
+                <td><a href="/subjects/edit/<%= element.id %>" >edit</a></td>
+                <td><a href="/subjects/delete/<%= element.id %>" onclick="confirm('are you sure?')">delete</a></td>
             </tr>
         <%})%>
     </tbody>

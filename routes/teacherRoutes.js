@@ -1,5 +1,6 @@
 const routes = require('express').Router()
 const TeacherController = require('../controllers/TeachersController')
+
 routes.get('/teachers', (req, res) => {
     TeacherController.findAll()
         .then(dataTeacher => {

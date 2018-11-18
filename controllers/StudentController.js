@@ -1,35 +1,36 @@
-const { Teacher } = require('../models')
-class TeacherController {
+const {Student} = require('../models')
+
+class StudentController {
     static findAll() {
-        return Teacher.findAll()
+        return Student.findAll()
     }
     static findOne(id) {
-        return Teacher.findOne({
+        return Student.findOne({
             where: {
                 id: id
             }
-        })
+        })        
     }
     static create(params) {
-        return Teacher.create({
+        return Student.create({
             first_name: params.first_name,
             last_name: params.last_name,
             email: params.email
         })
     }
     static update(params, id) {
-        return Teacher.update({
+        return Student.update({
             first_name: params.first_name,
             last_name: params.last_name,
             email: params.email
         }, {
-                where: {
-                    id: id
-                }
-            })
+            where: {
+                id: id
+            }
+        })
     }
     static delete(id) {
-        return Teacher.destroy({
+        return Student.destroy({
             where: {
                 id: id
             }
@@ -37,6 +38,4 @@ class TeacherController {
     }
 }
 
-module.exports = TeacherController
-
-
+module.exports = StudentController
