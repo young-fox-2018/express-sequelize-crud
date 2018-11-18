@@ -12,6 +12,9 @@
         Nama : <%=student.first_name %> <%=student.last_name %>
         <br>
         Email : <%=student.email %>
+        <br>
+        <a href="student/edit/<%=data.id%>">Edit</a>
+        <a href="student/delete/<%=data.id%>">Delete</a>
       </li>
       <%})%>
       <li></li>

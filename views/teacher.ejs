@@ -12,6 +12,9 @@
         Nama : <%=teacher.first_name %> <%=teacher.last_name %>
         <br>
         Email : <%=teacher.email %>
+        <br>
+        <a href="teacher/edit/<%=teacher.id%>">Edit</a>
+        <a href="teacher/delete/<%=teacher.id%>" onclick="return confirm('Apa anda yakin ingin menghapus data ini?')">Delete</a>
       </li>
       <%})%>
       <li></li>
