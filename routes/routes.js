@@ -28,5 +28,55 @@ routes.post('/student/edit/:id', (req, res) => {
         studentController.editStudentPost(req, res)
 })
 
+routes.get('/student/delete/:id', (req, res) => {
+        studentController.delete(req, res)
+})
+// Teachers Router
+routes.get('/teachers', (req, res) => {
+        teacherController.getAllTeacher(req, res)
+})
+
+routes.get('/teachers/add', (req, res) => {
+        res.render("addTeacher.ejs")
+})
+
+routes.post('/teachers/add', (req, res) => {
+        teacherController.add(req, res)
+})
+
+routes.get('/teacher/edit/:id', (req,res) => {
+        teacherController.viewEditTeacher(req, res)
+})
+
+routes.post('/teacher/edit/:id', (req, res) => {
+        teacherController.editTeacherPost(req, res)
+})
+
+routes.get('/teacher/delete/:id', (req, res) => {
+        teacherController.delete(req, res)
+})
+
+// Subject Router
+
+routes.get('/subjects', (req,res) => {
+        subjectController.getAllSubject(req,res)
+})
+
+routes.get('/subjects/add', (req, res) => {
+        res.render("addSubject.ejs")
+})
+
+routes.post('/subjects/add', (req, res) => {
+        subjectController.add(req, res)
+})
+
+
+
+
+
+
+
+
+
 
 module.exports = routes

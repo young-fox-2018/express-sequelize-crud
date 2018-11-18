@@ -55,9 +55,19 @@ class studentController {
                 throw err
             })
     }
-
-    
-
+    static delete(req, res) {
+        Student.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(function() {
+            res.redirect("/students")
+        })
+        .catch(function(err) {
+            res.send(err)
+        })
+    }
 }
 
 
