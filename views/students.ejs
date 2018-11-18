@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Students</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    </style>
+</head>
+<body>
+    <center>
+        <div class="header">
+            <h1>Students Data</h1>
+            <a href="/student/add" style="text-decoration: none">add student</a>
+        </div>
+        <div class="table">
+            <table>
+            <thead>
+                <th>id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Option</th>
+            </thead>
+            <tbody>
+                <% students.forEach(student => { %>
+                    <tr>
+                        <td>
+                            <%=student.id%>
+                        </td>
+                        <td>
+                            <%=student.firts_name%>
+                        </td>
+                        <td>
+                            <%=student.last_name%>
+                        </td>
+                        <td>
+                            <%=student.email%>
+                        </td>
+                        <td>
+                            <a href="/student/edit/<%= student.id %>">Edit</a>
+                            <a href="/student/delete/<%= student.id %>" onclick="return confirm('delete this student?')"> | Delete</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+            </table>
+        </div>
+    </center>
+</body>
+</html>
