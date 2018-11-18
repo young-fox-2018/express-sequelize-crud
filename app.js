@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const routes = require('./routes');
 const student = require('./routes/student.js');
 const teacher = require('./routes/teacher.js');
+const subject = require('./routes/subject.js');
 
 // app.get('/', function (req, res) {
 //   res.send("I love Hacktiv8!")
@@ -17,6 +18,7 @@ app.set('view engine', 'ejs');
 app.use('/', routes);
 app.use('/student', student);
 app.use('/teacher', teacher);
+app.use('/subject', subject);
 
 app.listen(3000, function() {
   console.log('App listening on port 3000');
