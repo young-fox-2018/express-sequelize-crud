@@ -67,11 +67,11 @@ routes.get("/delete/:id", function(req,res){
     tController.deleteTeacher(id)
     .then( data => {
         if(!data){
-            View.display("Data not found")
+            View.displayError("Data not found")
             res.redirect('/teachers')
         }
         else{
-            View.display("Data is deleted!")
+            View.displayError("Data is deleted!")
             res.redirect('/teachers')
 
         }

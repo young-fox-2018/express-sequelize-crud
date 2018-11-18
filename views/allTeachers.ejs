@@ -5,7 +5,7 @@
     a:hover {color:pink}
     table,th,td{border: 2px solid black;}
     </style>
-    <h1 style="text-align:center; color:blueviolet">Teachers Data</h1>
+    <h1 style="text-align:center; color:goldenrod">Teachers Data</h1>
     <h3 style="text-align:center; margin-top: -15px;"><a href="/teachers/add">add teacher</a></h3>
     <table style="width: 100% ">
         <tr>
@@ -23,7 +23,7 @@
             <td style="text-align: center"><%= teachersAll[iTeachers].first_name %></td>
             <td style="text-align: center"><%= teachersAll[iTeachers].last_name %></td>
             <td style="text-align: center"><%= teachersAll[iTeachers].email %></td>
-            <td style="text-align: center"><a href="/teachers/edit/<%= teachersAll[iTeachers].id %>">Edit</a> | <a href="/teachers/delete/<%= teachersAll[iTeachers].id %>">Delete</a></td>
+            <td style="text-align: center"><a href="/teachers/edit/<%= teachersAll[iTeachers].id %>">Edit</a> | <a href="/teachers/delete/<%= teachersAll[iTeachers].id %>" onclick= 'return confirm("WARNING! \nAre you sure about deleting this teacher?")'>Delete</a></td>
         </tr>
         <% } %>
     </table>

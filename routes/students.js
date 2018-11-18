@@ -87,11 +87,11 @@ routes.get("/delete/:id", function(req,res){
     sController.deleteStudent(id)
     .then( data => {
         if(!data){
-            confirm("Data not found")
+            View.displayError("Data not found")
             res.redirect('/students')
         }
         else{
-            confirm("Data is deleted!")
+            View.displayError("Data is deleted!")
             res.redirect('/students')
 
         }

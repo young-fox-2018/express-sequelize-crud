@@ -85,11 +85,11 @@ routes.get("/delete/:id", function(req,res){
     sbController.deleteSubject(id)
     .then( data => {
         if(!data){
-            // confirm("Data not found")
+            View.displayError("Data not found")
             res.redirect('/subjects')
         }
         else{
-            // confirm("Data is deleted!")
+            View.displayError("Data is deleted!")
             res.redirect('/subjects')
 
         }
