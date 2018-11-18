@@ -34,7 +34,8 @@
                 <td><%= data[i].last_name %></td>
                 <td><%= data[i].email %></td>
                 <td>
-                    <a onclick="confirm('Are You Sure?')" href="/teachers/delete/<%= data[i].id %>">Remove</a>
+                    <a href="/students/edit/<%= data[i].id %>">Edit</a>
+                    <a onclick="confirm('Are You Sure?')" href="/students/delete/<%= data[i].id %>">Remove</a>
                 </td>
             </tr>
             <% }; %>

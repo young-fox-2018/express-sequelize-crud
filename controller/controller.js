@@ -3,6 +3,19 @@
 const Model = require('../models/index')
 
 class Controller {
+    static showAllStudents() {
+        return new Promise((resolve, reject) => {
+            Model.Student.findAll()
+                .then(data => {
+                    const result = data.map(element => element.dataValues)
+                    resolve(result)
+                })
+                .catch(err => {
+                    reject(err)
+                })
+        })
+    }
+
     static readAllTeacherData() {
         return new Promise((resolve, reject) => {
             Model.Teacher.findAll()
@@ -32,6 +45,22 @@ class Controller {
         })
     }
 
+    static getOneStudent(id) {
+        return new Promise((resolve, reject) => {
+            Model.Student.findOne({
+                where: {
+                    id: id
+                }
+            })
+            .then((data) => {
+                resolve(data)
+            })
+            .catch((err) => {
+                reject(err)
+            })
+        })
+    }
+
     static editStudent(obj, id) {
         return new Promise((resolve, reject) => {
             if (obj.first_name == '' || obj.last_name == '' || obj.email == '') {
@@ -46,29 +75,45 @@ class Controller {
                         id : id
                     }
                 })
-                .then(data => {
-                    resolve(data)
-                })
-                .catch(err => {
-                    reject(err)
-                })
-            }         
+                    .then(data => {
+                        resolve(data)
+                    })
+                    .catch(err => {
+                        reject(err)
+                    })
+            }
         })
     }
 
     static deleteStudent(obj) {
         return new Promise((resolve, reject) => {
-                Model.Student.destroy( {
+                Model.Student.destroy({
                     where : {
                         id : obj.id
                     }
                 })
-                .then(data => {
-                    resolve(data)
+                    .then(data => {
+                        resolve(data)
+                    })
+                    .catch(err => {
+                        reject(err)
+                    })
+        })
+    }
+
+    static deleteTeacher(id) {
+        return new Promise((resolve, reject) => {
+            Model.Teacher.destroy({
+                where : {
+                    id : id
+                }
+            })
+            .then(data => {
+                resolve(data)
                 })
-                .catch(err => {
-                    reject(err)
-                })        
+            .catch(err => {
+                reject(err)
+                })
         })
     }
 }

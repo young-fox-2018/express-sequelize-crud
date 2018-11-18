@@ -2,10 +2,16 @@
 
 const Controller = require('../controller/controller')
 const routes = require('express').Router()
-const alert = require('alert-node')
 const View = require('../View')
 
 routes.get('/', (req, resp) => {
+    Controller.showAllStudents()
+    .then((data) => {
+        resp.render('showStudentsView.ejs', {data : data})
+    })
+})
+
+routes.get('/create', (req, resp) => {
     resp.render('studentView.ejs')
 })
 
@@ -13,45 +19,46 @@ routes.post('/',(req, resp) => {
     Controller.addStudent(req.body)
     .then(data => {
         const result = data.dataValues
-       
+
         if (result.id > 0) {
-            resp.render('studentDataSavedView.ejs')
+            resp.redirect('/students');
         }
     })
     .catch(err => {
         const message = err.message
-        
+
         View.printError(message)
     })
 })
 
 routes.get('/edit/:id',(req, resp) => {
-    resp.render('studentEditDataView.ejs')
+    Controller.getOneStudent(req.params.id)
+    .then((data) => {
+        resp.render('studentEditDataView.ejs', { data: data })
+    })
+    .catch((err) => {
+        resp.redirect('/students')
+    })
 })
 
 routes.post('/edit/:id',(req, resp) => {
     Controller.editStudent(req.body, req.params.id)
-        .then(data => {
-            if (!data) {
-                alert('Data not found')
-            } else {
-                resp.render('studentEditDataSuccess.ejs')
-            }
-          
-        })
-        .catch(err => {
-           alert(err)
-        })
+    .then(data => {
+        resp.redirect('/students')
+    })
+    .catch(err => {
+        resp.redirect('/students')
+    })
 })
 
 routes.get('/delete/:id', (req, resp) => {
     Controller.deleteStudent(req.params)
         .then(data => {
             if (!data) {
-                alert('Data not found')
+                resp.redirect('/students')
             } else {
-                alert('Data successfully deleted')
-            }  
+                resp.redirect('/students')
+            }
         })
         .catch(err => {
             View.printError(err)
