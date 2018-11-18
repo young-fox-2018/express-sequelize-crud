@@ -1,13 +1,13 @@
 "use strict"
 
-const Controller = require('../controller/controller')
+const TeacherController = require('../controller/TeacherController.js')
 const route = require('express').Router()
 const View = require('../View')
 
 route.get('/', (req, res) => {
-    Controller.readAllTeacherData()
+    TeacherController.getAll()
         .then(data => {
-            res.render('teacherView.ejs', {data : data})
+            res.render('../views/teacher', {data : data})
         })
         .catch(err => {
             View.printError(err)
@@ -15,7 +15,7 @@ route.get('/', (req, res) => {
 })
 
 route.get('/delete/:id' , (req, res) => {
-    Controller.deleteTeacher(req.params.id)
+    TeacherController.delete(req.params.id)
         .then(data => {
             res.redirect('/teachers')
         })

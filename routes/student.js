@@ -1,40 +1,35 @@
 "use strict"
 
-const Controller = require('../controller/controller')
+const StudentController = require('../controller/StudentController')
 const routes = require('express').Router()
 const View = require('../View')
 
+
 routes.get('/', (req, resp) => {
-    Controller.showAllStudents()
+    StudentController.getAll()
     .then((data) => {
-        resp.render('showStudentsView.ejs', {data : data})
+        resp.render('../views/student/', {data : data})
     })
 })
 
 routes.get('/create', (req, resp) => {
-    resp.render('studentView.ejs')
+    resp.render('../views/student/create.ejs')
 })
 
 routes.post('/',(req, resp) => {
-    Controller.addStudent(req.body)
+    StudentController.add(req.body)
     .then(data => {
-        const result = data.dataValues
-
-        if (result.id > 0) {
-            resp.redirect('/students');
-        }
+        resp.redirect('/students');
     })
     .catch(err => {
-        const message = err.message
-
-        View.printError(message)
+        resp.redirect('/students');
     })
 })
 
 routes.get('/edit/:id',(req, resp) => {
-    Controller.getOneStudent(req.params.id)
+    StudentController.getOne(req.params.id)
     .then((data) => {
-        resp.render('studentEditDataView.ejs', { data: data })
+        resp.render('../views/student/edit.ejs', { data: data })
     })
     .catch((err) => {
         resp.redirect('/students')
@@ -42,7 +37,7 @@ routes.get('/edit/:id',(req, resp) => {
 })
 
 routes.post('/edit/:id',(req, resp) => {
-    Controller.editStudent(req.body, req.params.id)
+    StudentController.edit(req.body, req.params.id)
     .then(data => {
         resp.redirect('/students')
     })
@@ -52,7 +47,7 @@ routes.post('/edit/:id',(req, resp) => {
 })
 
 routes.get('/delete/:id', (req, resp) => {
-    Controller.deleteStudent(req.params)
+    StudentController.delete(req.params)
         .then(data => {
             if (!data) {
                 resp.redirect('/students')

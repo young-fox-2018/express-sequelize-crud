@@ -2,8 +2,8 @@
 
 const Model = require('../models/index')
 
-class Controller {
-    static showAllStudents() {
+class StudentController {
+    static getAll() {
         return new Promise((resolve, reject) => {
             Model.Student.findAll()
                 .then(data => {
@@ -16,36 +16,7 @@ class Controller {
         })
     }
 
-    static readAllTeacherData() {
-        return new Promise((resolve, reject) => {
-            Model.Teacher.findAll()
-            .then(data => {
-                const result = data.map(element => element.dataValues)
-                resolve(result)
-            })
-            .catch(err => {
-                reject(err)
-            })
-        })
-    }
-
-    static addStudent(obj) {
-        return new Promise((resolve, reject) => {
-            Model.Student.create({
-                first_name : obj.first_name,
-                last_name : obj.last_name,
-                email : obj.email
-            })
-            .then(data => {
-                resolve(data)
-            })
-            .catch(err => {
-                reject(err)
-            })
-        })
-    }
-
-    static getOneStudent(id) {
+    static getOne(id) {
         return new Promise((resolve, reject) => {
             Model.Student.findOne({
                 where: {
@@ -61,11 +32,28 @@ class Controller {
         })
     }
 
-    static editStudent(obj, id) {
+    static add(obj) {
+        return new Promise((resolve, reject) => {
+            Model.Student.create({
+                first_name : obj.first_name,
+                last_name : obj.last_name,
+                email : obj.email
+            })
+            .then(data => {
+                resolve(data)
+            })
+            .catch(err => {
+                reject(err)
+            })
+        })
+    }
+
+    static edit(obj, id) {
         return new Promise((resolve, reject) => {
             if (obj.first_name == '' || obj.last_name == '' || obj.email == '') {
                 reject('Please fill all field to update')
             } else {
+                console.log('masuk ga')
                 Model.Student.update( {
                     first_name : obj.first_name,
                     last_name : obj.last_name,
@@ -75,47 +63,33 @@ class Controller {
                         id : id
                     }
                 })
-                    .then(data => {
-                        resolve(data)
-                    })
-                    .catch(err => {
-                        reject(err)
-                    })
-            }
+                .then(data => {
+                  
+                    resolve(data)
+                })
+                .catch(err => {
+                    console.log(err)
+                    reject(err)
+                })
+            }         
         })
     }
 
-    static deleteStudent(obj) {
+    static delete(obj) {
         return new Promise((resolve, reject) => {
-                Model.Student.destroy({
+                Model.Student.destroy( {
                     where : {
                         id : obj.id
                     }
                 })
-                    .then(data => {
-                        resolve(data)
-                    })
-                    .catch(err => {
-                        reject(err)
-                    })
-        })
-    }
-
-    static deleteTeacher(id) {
-        return new Promise((resolve, reject) => {
-            Model.Teacher.destroy({
-                where : {
-                    id : id
-                }
-            })
-            .then(data => {
-                resolve(data)
+                .then(data => {
+                    resolve(data)
                 })
-            .catch(err => {
-                reject(err)
-                })
+                .catch(err => {
+                    reject(err)
+                })        
         })
     }
 }
 
-module.exports = Controller
+module.exports = StudentController
