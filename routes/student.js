@@ -66,10 +66,9 @@ route.get('/delete/:id', (req , res) => {
         res.render('error.ejs' , {data: `Data not found`})
       } else {
         // g bisa pake alert (?)
-        // alert(`Data is deleted!`)
         Controller.readStudents()
-          .then(data => {
-            res.render('student.ejs' , {data:data})
+        .then(data => {
+          res.render('student.ejs' , { data: data, message: 'success delete student'})
           })
       }
     })

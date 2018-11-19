@@ -47,6 +47,10 @@
           </tr>
          <% } %>
       </table>
+
+      <% if (message !== null || message !== undefined) { %>
+          <h2> <%= message %> </h2>
+      <% } %>
   
 </body>
 </html>
