@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Subject</title>
+  </head>
+  <body>
+            <h2>Edit Data Subject</h2>
+            <form action="/subject/edit/<%=data.id%>" method="POST">
+                First name:
+                <br>
+                <input type="text" name="subject_name" placeholder="Subject Name" value="<%=data.subject_name%>">
+
+                <br>
+                <button class="btn btn-primary" onclick="return confirm ('Are you sure want to edit this data <%=data.subject_name%>?')">Edit</button>
+            </form>
+  </body>
+</html>

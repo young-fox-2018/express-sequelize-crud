@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Teacher</title>
+  </head>
+  <body>
+            <h2>Edit Data Teacher</h2>
+            <form action="/teacher/edit/<%=data.id%>" method="POST">
+                First name:
+                <br>
+                <input type="text" name="first_name" placeholder="First Name" value="<%=data.firstname%>">
+                <br> Last name:
+                <br>
+                <input type="text" name="last_name" placeholder="Last Name" value="<%=data.lastname%>">
+                <br> Email:
+                <br>
+                <input type="text" name="email" placeholder="Email" value="<%=data.email%>">
+                <br>
+                <br>
+                <button class="btn btn-primary" onclick="return confirm ('Are you sure want to edit this data <%=data.firstname%> <%=data.lastname%>?')">Edit</button>
+            </form>
+  </body>
+</html>
